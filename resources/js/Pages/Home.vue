@@ -1,10 +1,9 @@
 <template >
     <Head title="Home">
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <!-- <link rel="icon" type="image/svg+xml" href="/favicon.svg" /> -->
     </Head>
     <Layouts>
         <div>
-            <h1 class="text-3xl font-bold underline">Hello Vue with Inhetia !</h1>
             <p>Technology Used:</p>
             <ul>
                 <li>{{ frameworks.server_side }}</li>
@@ -26,3 +25,7 @@ export default {
     components: { Layouts, Head }
 }
 </script>
+<style scoped>
+
+
+</style>

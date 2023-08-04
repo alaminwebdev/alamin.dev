@@ -1,10 +1,10 @@
 <template >
-    <nav class="navbar sticky-top border-bottom">
+    <nav class="navbar sticky-top border-bottom" style="z-index: 1050;">
         <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+            <a class="navigation_button" :class="{ show : isBtnClose}" @click="handleButton" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
                 aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+                <span class="navigation_icon"></span>
+            </a>
             <Link href="/" class="navbar-brand text-primary-emphasis fw-bold" >{ Mohammad Alamin } </Link>
             <div class="offcanvas offcanvas-end shadow" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
                 <div class="offcanvas-header">
@@ -13,13 +13,13 @@
                 <div class="offcanvas-body d-flex flex-column justify-content-between">
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">
-                            <Link href="/" class="nav-link fw-bold fs-4 active text-primary-emphasis">Home</Link>
+                            <Link href="/" class="d-block fw-bold fs-4 text-primary-emphasis navigation_link">Home</Link>
                         </li>
                         <li class="list-group-item">
-                            <Link href="/about" class="nav-link fw-bold fs-4 text-primary-emphasis">About</Link>
+                            <Link href="/about" class="d-block fw-bold fs-4 text-primary-emphasis navigation_link">About</Link>
                         </li>
                         <li class="list-group-item">
-                            <Link href="/contact" class="nav-link fw-bold fs-4 text-primary-emphasis">Contact</Link>
+                            <Link href="/contact" class="d-block fw-bold fs-4 text-primary-emphasis navigation_link">Contact</Link>
                         </li>
                     </ul>
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -31,19 +31,155 @@
 <script>
 import { Link } from '@inertiajs/vue3'
 export default {
-    components: { Link }
+    data() {
+        return {
+            isBtnClose:false,
+        }
+    },
+    components: { Link },
+    methods:{
+        handleButton(){
+            this.isBtnClose = !this.isBtnClose;
+        }
+    }
 }
 </script>
 <style>
-.offcanvas{
+.offcanvas {
     background: rgba(255, 255, 255, 0.40);
     backdrop-filter: blur(6.6px);
     -webkit-backdrop-filter: blur(6.6px);
 }
-.list-group-item{
+
+.list-group-item {
     background: none;
 }
+
 .navbar .offcanvas-backdrop {
     background-color: #fff !important;
 }
-</style>
+
+
+.navigation__checkbox {
+    display: none;
+}
+
+.navigation_button {
+    background-color: #8254e5;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    z-index: 2000;
+    cursor: pointer;
+    position: relative;
+}
+
+.navigation__background {
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    position: fixed;
+    top: 55px;
+    right: 95px;
+    background-image: radial-gradient(#8254e5, #66b3ff);
+    z-index: 1000;
+    transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1);
+}
+
+.navigation__nav {
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 1500;
+    opacity: 0;
+    width: 0;
+    transition: all 0.8s;
+}
+
+.navigation__list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.navigation__item {
+    margin: 10px;
+}
+
+.navigation_link{
+    letter-spacing: 2px;
+    text-decoration: none;
+    transition: all 0.5s cubic-bezier(0.18, 0.89, 0.32, 1.28)
+}
+
+.navigation_link:hover,
+.navigation_link:active {
+    transform: translateX(15px);
+}
+
+.navigation_icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.navigation_icon,
+.navigation_icon::before,
+.navigation_icon::after {
+    width: 20px;
+    height: 2px;
+    background-color: #fff;
+    display: inline-block;
+}
+
+.navigation_icon::before,
+.navigation_icon::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    transition: all 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28)
+}
+
+.navigation_icon::before {
+    top: -7px;
+}
+
+.navigation_icon::after {
+    top: 7px;
+}
+
+.navigation_button.show .navigation_icon {
+    background-color: transparent;
+}
+.navigation_button.show .navigation_icon::before {
+    top: 0;
+    transform: rotate(135deg);
+}
+
+.navigation_button.show .navigation_icon::after {
+    top: 0;
+    transform: rotate(-135deg);
+}
+
+.navigation__checkbox:checked+.navigation__button .navigation__icon {
+    background-color: transparent;
+}
+
+.navigation__checkbox:checked+.navigation__button .navigation__icon::before {
+    top: 0;
+    transform: rotate(135deg);
+}
+
+.navigation__checkbox:checked+.navigation__button .navigation__icon::after {
+    top: 0;
+    transform: rotate(-135deg);
+}</style>
