@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\Frontend\FrontController;
 use Illuminate\Support\Facades\Route;
-
+use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,4 +20,15 @@ Route::get('/', [FrontController::class, 'index'])->name('home');
 Route::get('/about', [FrontController::class, 'about'])->name('about');
 Route::get('/contact', [FrontController::class, 'contact'])->name('contact');
 
+
+
+// Set the root view for all admin routes
+Route::group(['prefix' => 'admin', 'middleware' => 'web'], function () {
+
+    Route::inertia('/', 'Backend/Dashboard')->name('admin.home');
+    Route::get('/about', function(){
+        return Inertia::render('Backend/Dashboard');
+    });
+    // Other admin routes...
+});
 

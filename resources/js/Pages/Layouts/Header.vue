@@ -49,6 +49,11 @@ export default {
     background: rgba(255, 255, 255, 0.40);
     backdrop-filter: blur(6.6px);
     -webkit-backdrop-filter: blur(6.6px);
+    transition: all 0.5s cubic-bezier(0.18, 0.89, 0.32, 1.28)
+}
+
+.offcanvas.offcanvas-end {
+    border-left:0;
 }
 
 .list-group-item {
@@ -60,10 +65,6 @@ export default {
 }
 
 
-.navigation__checkbox {
-    display: none;
-}
-
 .navigation_button {
     background-color: #8254e5;
     height: 50px;
@@ -74,55 +75,16 @@ export default {
     position: relative;
 }
 
-.navigation__background {
-    height: 60px;
-    width: 60px;
-    border-radius: 50%;
-    position: fixed;
-    top: 55px;
-    right: 95px;
-    background-image: radial-gradient(#8254e5, #66b3ff);
-    z-index: 1000;
-    transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1);
-}
-
-.navigation__nav {
-    height: 100vh;
-    width: 100%;
-    position: fixed;
-    top: 0;
-    right: 0;
-    z-index: 1500;
-    opacity: 0;
-    width: 0;
-    transition: all 0.8s;
-}
-
-.navigation__list {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    list-style: none;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.navigation__item {
-    margin: 10px;
-}
 
 .navigation_link{
     letter-spacing: 2px;
     text-decoration: none;
-    transition: all 0.5s cubic-bezier(0.18, 0.89, 0.32, 1.28)
+    transition: all 0.5s cubic-bezier(0.18, 0.89, 0.32, 1.28);
 }
 
 .navigation_link:hover,
 .navigation_link:active {
-    transform: translateX(15px);
+    transform: translateX(10px);
 }
 
 .navigation_icon {

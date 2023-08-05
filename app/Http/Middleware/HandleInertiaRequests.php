@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Illuminate\Http\Request;
 use Inertia\Middleware;
+use Illuminate\Support\Str;
 
 class HandleInertiaRequests extends Middleware
 {
@@ -14,6 +15,16 @@ class HandleInertiaRequests extends Middleware
      * @var string
      */
     protected $rootView = 'app';
+
+    public function rootView(Request $request)
+    {
+        // Set the root view to 'admin' for routes starting with '/admin/'
+        if (Str::startsWith($request->path(), 'admin')) {
+            return 'admin';
+        }
+
+        return $this->rootView;
+    }
 
     /**
      * Determines the current asset version.
