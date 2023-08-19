@@ -3,346 +3,109 @@
         <!-- <link rel="icon" type="image/svg+xml" href="/favicon.svg" /> -->
     </Head>
     <Layouts>
-        <section class="game-section">
-            <h2 class="line-title">trending games</h2>
-            <swiper :slides-per-view="3" :space-between="50" @swiper="onSwiper" @slideChange="onSlideChange">
-                <swiper-slide style="background-image: url(https://ucarecdn.com/75d7700d-c102-40ff-9ba1-f0641444c616/dota2.jpg);">
-                    <div class="item" >
-                        <div class="item-text">
-                            <h3>Dota 2</h3>
-                            <p>Dota 2 is a multiplayer online battle arena by Valve. The game is a sequel to Defense of the Ancients, which was a community-created mod for Blizzard Entertainment's Warcraft III.</p>
-                        </div>
-                    </div>
-                </swiper-slide>
-                <swiper-slide style="background-image: url(https://ucarecdn.com/2a5f69bc-befa-49f4-acc6-ab1dcae514c7/winter3.jpg);">
-                    <div class="item" >
-                        <div class="item-text">
-                            <h3>The Witcher 3</h3>
-                            <p>The Witcher 3 is a multiplayer online battle arena by Valve. The game is a sequel to Defense
-                                of the Ancients, which was a community-created mod for Blizzard Entertainment's Warcraft III.
-                            </p>
-                        </div>
-                    </div>
-                </swiper-slide>
-                <swiper-slide style="background-image: url(https://ucarecdn.com/ec1918b1-2674-452c-bf61-8f73d8cc40c6/rdr2.jpg);">
-                    <div class="item" >
-                    <div class="item-text">
-                        <h3>RDR 2</h3>
-                        <p>RDR 2 is a multiplayer online battle arena by Valve. The game is a sequel to Defense of the
-                            Ancients, which was a community-created mod for Blizzard Entertainment's Warcraft III.</p>
-                    </div>
-                </div>
-                </swiper-slide>
-                <swiper-slide style="background-image: url(https://ucarecdn.com/6ba9052d-6105-4491-917b-e1a65b68f920/pubg.jpg);">
-                    <div class="item" >
-                    <div class="item-text">
-                        <h3>PUBG Mobile</h3>
-                        <p>PUBG 2 is a multiplayer online battle arena by Valve. The game is a sequel to Defense of the
-                            Ancients, which was a community-created mod for Blizzard Entertainment's Warcraft III.</p>
-                    </div>
-                </div>
-                </swiper-slide>
-                <swiper-slide style="background-image: url(https://ucarecdn.com/77598be3-c67f-40de-83d3-71a0f2f76c56/fortnite.jpg);">
-                    <div class="item" >
-                    <div class="item-text">
-                        <h3>Fortnite</h3>
-                        <p>Battle royale where 100 players fight to be the last person standing. which was a
-                            community-created mod
-                            for Blizzard Entertainment's Warcraft III.</p>
-                    </div>
-                </div>
-                </swiper-slide>
-                <swiper-slide style="background-image: url(https://ucarecdn.com/ed548880-32e4-42af-9d4e-632623903256/farcry5.jpg);">
-                    <div class="item" >
-                    <div class="item-text">
-                        <h3>Far Cry 5</h3>
-                        <p>Far Cry 5 is a 2018 first-person shooter game developed by Ubisoft.
-                            which was a community-created mod for Blizzard Entertainment's Warcraft III.</p>
-                    </div>
-                </div>
-                </swiper-slide>
-            </swiper>
+        <div class="row">
+            <div class="col-lg-4">
 
-            <!-- <div class="owl-carousel custom-carousel owl-theme">
-                <div class="item active" style="background-image: url(https://ucarecdn.com/75d7700d-c102-40ff-9ba1-f0641444c616/dota2.jpg);">
-                    <div class="item-desc">
-                        <h3>Dota 2</h3>
-                        <p>Dota 2 is a multiplayer online battle arena by Valve. The game is a sequel to Defense of the Ancients, which was a community-created mod for Blizzard Entertainment's Warcraft III.</p>
-                    </div>
+            </div>
+            <div class="col-lg-8 mt-5">
+                <div class="carousel-container">
+                    <Carousel :itemsToShow="4.00" :wrapAround="true" :transition="500">
+                        <Slide v-for="slide in 10" :key="slide">
+                            <div class="carousel__item">{{ slide }}</div>
+                        </Slide>
+                        <template #addons="{ slidesCount }">
+                            <Navigation v-if="slidesCount > 1" />
+                            <Pagination v-if="slidesCount > 1" />
+                        </template>
+                    </Carousel>
                 </div>
-                <div class="item" style="background-image: url(https://ucarecdn.com/2a5f69bc-befa-49f4-acc6-ab1dcae514c7/winter3.jpg);">
-                    <div class="item-desc">
-                        <h3>The Witcher 3</h3>
-                        <p>The Witcher 3 is a multiplayer online battle arena by Valve. The game is a sequel to Defense
-                            of the Ancients, which was a community-created mod for Blizzard Entertainment's Warcraft III.
-                        </p>
-                    </div>
-                </div>
-                <div class="item" style="background-image: url(https://ucarecdn.com/ec1918b1-2674-452c-bf61-8f73d8cc40c6/rdr2.jpg);">
-                    <div class="item-desc">
-                        <h3>RDR 2</h3>
-                        <p>RDR 2 is a multiplayer online battle arena by Valve. The game is a sequel to Defense of the
-                            Ancients, which was a community-created mod for Blizzard Entertainment's Warcraft III.</p>
-                    </div>
-                </div>
-                <div class="item" style="background-image: url(https://ucarecdn.com/6ba9052d-6105-4491-917b-e1a65b68f920/pubg.jpg);">
-                    <div class="item-desc">
-                        <h3>PUBG Mobile</h3>
-                        <p>PUBG 2 is a multiplayer online battle arena by Valve. The game is a sequel to Defense of the
-                            Ancients, which was a community-created mod for Blizzard Entertainment's Warcraft III.</p>
-                    </div>
-                </div>
-                <div class="item" style="background-image: url(https://ucarecdn.com/77598be3-c67f-40de-83d3-71a0f2f76c56/fortnite.jpg);">
-                    <div class="item-desc">
-                        <h3>Fortnite</h3>
-                        <p>Battle royale where 100 players fight to be the last person standing. which was a
-                            community-created mod
-                            for Blizzard Entertainment's Warcraft III.</p>
-                    </div>
-                </div>
-                <div class="item" style="background-image: url(https://ucarecdn.com/ed548880-32e4-42af-9d4e-632623903256/farcry5.jpg);">
-                    <div class="item-desc">
-                        <h3>Far Cry 5</h3>
-                        <p>Far Cry 5 is a 2018 first-person shooter game developed by Ubisoft.
-                            which was a community-created mod for Blizzard Entertainment's Warcraft III.</p>
-                    </div>
-                </div>
-            </div> -->
-        </section>
+            </div>
+        </div>
     </Layouts>
 </template>
 <script>
 
-
 import Layouts from './Layouts/Layouts.vue';
 import { Head } from '@inertiajs/vue3';
 
-// Import Swiper Vue.js components
-import { Swiper, SwiperSlide } from 'swiper/vue';
-// import Swiper core and required modules
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
-import 'swiper/css/navigation';
-
-// Import Swiper styles
-import 'swiper/css';
+import { Carousel, Navigation, Pagination, Slide } from 'vue3-carousel';
+import 'vue3-carousel/dist/carousel.css';
 
 export default {
     props: {
         'frameworks': Object
     },
-    components: { Layouts, Head, Swiper, SwiperSlide },
     data() {
-        const onSwiper = (swiper) => {
-            console.log(swiper);
-        };
-        const onSlideChange = () => {
-            console.log('slide change');
-        };
         return {
-            onSwiper,
-            onSlideChange,
-            modules: [Navigation, Pagination, Scrollbar, A11y],
+
         }
     },
+    components: {
+        Layouts,
+        Head,
+        Carousel,
+        Slide,
+        Pagination,
+        Navigation,
+    },
     methods: {
-
-    },
-    mounted() {
-        // Initialize Owl Carousel
-    },
+    }
 }
 </script>
-<style scoped>
-/* -------- Landing page ------- */
-.game-section {
-    padding: 60px 50px;
-}
-
-
-
-.swiper-slide {
-    width: 320px !important;
-    height: 400px;
-    display: flex;
-    display: -webkit-flex;
-    align-items: flex-end;
-    -webkit-align-items: flex-end;
-    background: #343434 no-repeat center center / cover;
-    border-radius: 16px;
-    overflow: hidden;
+<style >
+.carousel-container {
     position: relative;
-    transition: all 0.4s ease-in-out;
-    -webkit-transition: all 0.4s ease-in-out;
-    cursor: pointer;
 }
 
-.swiper-slide.swiper-slide-active {
-    box-shadow: 12px 40px 40px rgba(0, 0, 0, 0.25);
-    -webkit-box-shadow: 12px 40px 40px rgba(0, 0, 0, 0.25);
+.carousel__slide {
+    padding: 15px 0;
 }
-.swiper-slide:hover{
-    width: 500px !important;
-}
-.game-section .swiper-slide:after {
-    content: "";
-    display: block;
-    position: absolute;
-    height: 100%;
+
+.carousel__item {
+    min-height: 200px;
     width: 100%;
-    left: 0;
-    top: 0;
-    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
-}
-
-.game-section .item-text {
-    padding: 0 24px 12px;
+    background-color: #10b981;
     color: #fff;
-    position: relative;
-    z-index: 1;
-    overflow: hidden;
-    transform: translateY(calc(100% - 54px));
-    -webkit-transform: translateY(calc(100% - 54px));
-    transition: all 0.4s ease-in-out;
-    -webkit-transition: all 0.4s ease-in-out;
+    font-size: 20px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.game-section .swiper-slide.swiper-slide-active .item-text {
-    transform: none;
-    -webkit-transform: none;
+.carousel__viewport {
+    perspective: 2000px;
 }
 
-.game-section .item-text p {
-    opacity: 0;
-    -webkit-transform: translateY(32px);
-    transform: translateY(32px);
-    transition: all 0.4s ease-in-out 0.2s;
-    -webkit-transition: all 0.4s ease-in-out 0.2s;
+.carousel__track {
+    transform-style: preserve-3d;
 }
 
-.game-section .swiper-slide.swiper-slide-active .item-text p {
+.carousel__slide--sliding {
+    transition: 0.5s;
+}
+
+.carousel__slide {
+    opacity: 0.9;
+    transform: rotateY(-20deg) scale(0.9);
+}
+
+.carousel__slide--active~.carousel__slide {
+    transform: rotateY(20deg) scale(0.9);
+}
+
+.carousel__slide--prev {
     opacity: 1;
-    -webkit-transform: translateY(0);
-    transform: translateY(0);
+    transform: rotateY(-20deg) scale(0.90);
 }
 
-.game-section .owl-theme.custom-carousel .owl-dots {
-    margin-top: -20px;
-    position: relative;
-    z-index: 5;
+.carousel__slide--next {
+    opacity: 1;
+    transform: rotateY(10deg) scale(0.95);
 }
 
-/******** Middle section CSS End *******/
-
-/***** responsive css Start ******/
-
-@media (min-width: 992px) and (max-width: 1199px) {
-    h2 {
-        margin-bottom: 32px;
-    }
-
-    h3 {
-        margin: 0 0 8px;
-        font-size: 24px;
-        line-height: 32px;
-    }
-
-    /* -------- Landing page ------- */
-    .game-section {
-        padding: 50px 30px;
-    }
-
-    .game-section .item {
-        margin: 0 12px 60px;
-        width: 260px;
-        height: 360px;
-    }
-
-    .game-section .item.active {
-        width: 400px;
-    }
-
-    .game-section .item-desc {
-        transform: translateY(calc(100% - 46px));
-        -webkit-transform: translateY(calc(100% - 46px));
-    }
-}
-
-@media (min-width: 768px) and (max-width: 991px) {
-    h2 {
-        margin-bottom: 32px;
-    }
-
-    h3 {
-        margin: 0 0 8px;
-        font-size: 24px;
-        line-height: 32px;
-    }
-
-    .line-title {
-        width: 330px;
-    }
-
-    /* -------- Landing page ------- */
-    .game-section {
-        padding: 50px 30px 40px;
-    }
-
-    .game-section .item {
-        margin: 0 12px 60px;
-        width: 240px;
-        height: 330px;
-    }
-
-    .game-section .item.active {
-        width: 360px;
-    }
-
-    .game-section .item-desc {
-        transform: translateY(calc(100% - 42px));
-        -webkit-transform: translateY(calc(100% - 42px));
-    }
-}
-
-@media (max-width: 767px) {
-    body {
-        font-size: 14px;
-    }
-
-    h2 {
-        margin-bottom: 20px;
-    }
-
-    h3 {
-        margin: 0 0 8px;
-        font-size: 19px;
-        line-height: 24px;
-    }
-
-    .line-title {
-        width: 250px;
-    }
-
-    /* -------- Landing page ------- */
-    .game-section {
-        padding: 30px 15px 20px;
-    }
-
-    .game-section .item {
-        margin: 0 10px 40px;
-        width: 200px;
-        height: 280px;
-    }
-
-    .game-section .item.active {
-        width: 270px;
-        box-shadow: 6px 10px 10px rgba(0, 0, 0, 0.25);
-        -webkit-box-shadow: 6px 10px 10px rgba(0, 0, 0, 0.25);
-    }
-
-    .game-section .item-desc {
-        padding: 0 14px 5px;
-        transform: translateY(calc(100% - 42px));
-        -webkit-transform: translateY(calc(100% - 42px));
-    }
+.carousel__slide--active {
+    opacity: 1;
+    transform: rotateY(0) scale(1.1);
 }
 </style>
